@@ -1,8 +1,8 @@
 package bstorm.akimts.correction_jpa.utils;
 
-import bstorm.akimts.correction_jpa.entities.Chambre;
-import bstorm.akimts.correction_jpa.entities.Hotel;
-import bstorm.akimts.correction_jpa.repo.HotelRepository;
+import bstorm.akimts.correction_jpa.models.entities.Chambre;
+import bstorm.akimts.correction_jpa.models.entities.Hotel;
+import bstorm.akimts.correction_jpa.data.repo.HotelRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 

@@ -1,38 +1,31 @@
-package bstorm.akimts.correction_jpa.entities;
+package bstorm.akimts.correction_jpa.models.entities;
 
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Getter @Setter
+@Builder
 @Entity
 @Table(name = "chambre")
 public class Chambre {
     @Id
-    @NonNull
     @Column(name = "num_chambre", nullable = false)
     private int numChambre;
 
-    @NonNull
     @Column(nullable = false)
     private boolean aTele;
 
-    @NonNull
     @Column(nullable = false)
     private boolean aCuisine;
 
-    @NonNull
     @Column(name = "a_minibar", nullable = false)
     private boolean aMiniBar;
 
-    @NonNull
     @Column(nullable = false, precision = 2)
     private float prix;
 

@@ -1,17 +1,14 @@
-package bstorm.akimts.correction_jpa.entities;
+package bstorm.akimts.correction_jpa.models.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Getter @Setter
+@Builder
 @Entity
 @Table(name = "gerant")
 public class Gerant {
@@ -20,10 +17,10 @@ public class Gerant {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "nom", length = 50)
+    @Column(name = "nom", length = 50, nullable = false)
     private String nom;
 
-    @Column(name = "prenom", length = 50)
+    @Column(name = "prenom", length = 50, nullable = false)
     private String prenom;
 
     @Column(name = "debut_carriere")
