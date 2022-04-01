@@ -1,9 +1,6 @@
 package bstorm.akimts.correction_jpa.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,30 +8,48 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "chambre")
 public class Chambre {
     @Id
+    @NonNull
     @Column(name = "num_chambre", nullable = false)
     private int numChambre;
 
-    @Column(name = "nbr_etoiles")
-    private Integer nbrEtoiles;
+    @NonNull
+    @Column(nullable = false)
+    private boolean aTele;
 
-    @Column(name = "nom", nullable = false, unique = true, length = 50)
-    private String nom;
+    @NonNull
+    @Column(nullable = false)
+    private boolean aCuisine;
 
-    @Column(name = "adresse", nullable = false)
-    private String adresse;
+    @NonNull
+    @Column(name = "a_minibar", nullable = false)
+    private boolean aMiniBar;
+
+    @NonNull
+    @Column(nullable = false, precision = 2)
+    private float prix;
 
     @ManyToMany
+    @JoinTable(
+            name = "visite",
+            joinColumns = @JoinColumn(name = "chambre_id"),
+            inverseJoinColumns = @JoinColumn(name = "visiteur_id"),
+            uniqueConstraints = @UniqueConstraint(
+                    name = "UNIK_visiteur_chambre",
+                    columnNames = { "chambre_id", "visiteur_id" }
+            )
+    )
     private List<Client> clients = new ArrayList<>();
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Hotel hotel;
 
 }
