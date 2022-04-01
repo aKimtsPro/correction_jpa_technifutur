@@ -20,17 +20,14 @@ public class Hotel {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "a_tele", nullable = false)
-    private boolean aTele;
+    @Column(name = "nbr_etoiles", columnDefinition = "INT NOT NULL CHECK (nbr_etoiles BETWEEN 1 AND 5)")
+    private byte nbrEtoile;
 
-    @Column(name = "a_cuisine", nullable = false)
-    private boolean aCuisine;
+    @Column(name = "nom", length = 50, nullable = false)
+    private String nom;
 
-    @Column(name = "a_minibar", nullable = false)
-    private boolean aMiniBar;
-
-    @Column(name = "prix", precision = 2, scale = 4)
-    private double prix;
+    @Column(name = "adresse", columnDefinition = "VARCHAR(200) DEFAULT 'inconnu'", insertable = false, nullable = false)
+    private String adresse;
 
     @OneToMany(mappedBy = "hotel")
     private List<Chambre> chambres;
