@@ -1,40 +1,50 @@
 package bstorm.akimts.correction_jpa.utils;
 
-import bstorm.akimts.correction_jpa.models.entities.Chambre;
-import bstorm.akimts.correction_jpa.models.entities.Hotel;
+import bstorm.akimts.correction_jpa.data.repo.GerantRepository;
 import bstorm.akimts.correction_jpa.data.repo.HotelRepository;
+import bstorm.akimts.correction_jpa.models.entities.Gerant;
+import bstorm.akimts.correction_jpa.models.entities.Hotel;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @Component
 public class DatabaseFiller implements InitializingBean {
 
     private final HotelRepository repository;
+    private final GerantRepository gRepo;
 
-    public DatabaseFiller(HotelRepository repository) {
+    public DatabaseFiller(HotelRepository repository, GerantRepository gRepo) {
         this.repository = repository;
+        this.gRepo = gRepo;
     }
 
     @Override
     public void afterPropertiesSet() throws Exception {
 
-        Hotel h = new Hotel();
-        h.setNom("mon hotel");
-        h.setAdresse("pas inconnu");
-        h.setNbrEtoile((byte)4);
-        h.getChambres().addAll(
-                List.of(
-                        new Chambre(1,false,false,false, 100),
-                        new Chambre(2,false,false,true, 200),
-                        new Chambre(3,false,true,false, 300)
-                )
-        );
+        Gerant g = Gerant.builder()
+                .debutCarriere(LocalDate.now())
+                .prenom("luc")
+                .nom("dubois")
+                .build();
+        gRepo.save(g);
 
-        h = repository.save(h);
+        g = Gerant.builder()
+                .debutCarriere(LocalDate.now().minusDays(2))
+                .prenom("marie")
+                .nom("desmet")
+                .build();
+        g = gRepo.save(g);
 
-        h.getChambres().add(new Chambre(4, false,true,true,400));
+        Hotel h = Hotel.builder()
+                .nom("Grand Budapest")
+                .adresse("0 rue null")
+                .gerant(g)
+                .nbrEtoile((byte)3)
+                .build();
+
+        repository.save(h);
 
     }
 }

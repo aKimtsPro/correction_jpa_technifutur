@@ -28,7 +28,7 @@ public class GerantMapper {
 
     }
 
-    public Gerant formToEntity(GerantForm  form) {
+    public Gerant formToEntity(GerantForm form) {
 
         if( form == null )
             return null;
