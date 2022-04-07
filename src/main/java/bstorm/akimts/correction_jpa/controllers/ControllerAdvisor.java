@@ -17,7 +17,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
-public class ControllerAdvisor extends ResponseEntityExceptionHandler{
+public class ControllerAdvisor /* extends ResponseEntityExceptionHandler */{
 
     @ExceptionHandler(ElementNotFoundException.class)
     public ResponseEntity<ErrorDTO> handleElementNotFound(ElementNotFoundException ex, HttpServletRequest request){
@@ -32,9 +32,9 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler{
                 );
     }
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        System.out.println("salut");
-        return ResponseEntity.ok("salut");
-    }
+//    @Override
+//    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+//        System.out.println("salut");
+//        return ResponseEntity.ok("salut");
+//    }
 }

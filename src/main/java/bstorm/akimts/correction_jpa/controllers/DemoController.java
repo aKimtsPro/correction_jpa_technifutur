@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -62,6 +63,7 @@ public class DemoController {
     @GetMapping("/for-connected")
     @PreAuthorize("isAuthenticated()")
     public String getForConnected(Authentication auth){
+        System.out.println(auth);
         return "pour connected";
     }
 
@@ -78,7 +80,5 @@ public class DemoController {
     public String getForAdmin(){
         return "pour role ADMIN";
     }
-
-
 
 }
