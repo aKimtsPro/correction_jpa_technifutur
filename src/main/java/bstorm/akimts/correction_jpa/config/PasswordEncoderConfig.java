@@ -20,7 +20,7 @@ public class PasswordEncoderConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+//    @Bean
     public UserDetailsService userDetailsService(){
         return username -> new UserDetails() {
             @Override
