@@ -1,8 +1,8 @@
-package bstorm.akimts.correction_jpa.metier.service;
+package bstorm.akimts.correction_jpa.metier.service.impl;
 
+import bstorm.akimts.correction_jpa.metier.service.spec.GerantService;
 import bstorm.akimts.correction_jpa.models.dtos.GerantDTO;
 import bstorm.akimts.correction_jpa.models.forms.GerantForm;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

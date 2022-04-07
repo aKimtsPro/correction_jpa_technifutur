@@ -1,8 +1,9 @@
-package bstorm.akimts.correction_jpa.metier.service;
+package bstorm.akimts.correction_jpa.metier.service.impl;
 
 import bstorm.akimts.correction_jpa.data.repo.GerantRepository;
 import bstorm.akimts.correction_jpa.exceptions.ElementNotFoundException;
 import bstorm.akimts.correction_jpa.metier.mapper.GerantMapper;
+import bstorm.akimts.correction_jpa.metier.service.spec.GerantService;
 import bstorm.akimts.correction_jpa.models.dtos.GerantDTO;
 import bstorm.akimts.correction_jpa.models.entities.Gerant;
 import bstorm.akimts.correction_jpa.models.forms.GerantForm;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class GerantServiceImpl implements GerantService{
+public class GerantServiceImpl implements GerantService {
 
     private final GerantRepository repository;
     private final GerantMapper mapper;

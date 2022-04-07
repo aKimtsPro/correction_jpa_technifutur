@@ -1,4 +1,4 @@
-package bstorm.akimts.correction_jpa.metier.service;
+package bstorm.akimts.correction_jpa.metier.service.spec;
 
 import bstorm.akimts.correction_jpa.models.dtos.GerantDTO;
 import bstorm.akimts.correction_jpa.models.forms.GerantForm;

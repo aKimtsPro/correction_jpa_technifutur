@@ -28,6 +28,7 @@ public class Hotel {
     private String adresse;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.PERSIST)
+    @OrderBy
     private List<Chambre> chambres = new ArrayList<>();
 
     @OneToOne
